@@ -1,0 +1,77 @@
+name: rico_app
+description: "تدلل — مساعدك الذكي يدلّك على أقرب مكان وأفضل عرض حسب موقعك في الأردن"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  geolocator: ^12.0.0
+  http: ^1.2.1
+  http_parser: ^4.0.2
+  url_launcher: ^6.2.6
+  intl: ^0.20.2
+  shared_preferences: ^2.3.2
+  share_plus: ^10.0.2
+  record: ^6.2.1
+  path_provider: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icon/icon.png
+    - assets/icon/foreground.png
+    - assets/icon/splash.png
+
+  fonts:
+    - family: PlexArabic
+      fonts:
+        - asset: assets/fonts/IBMPlexSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBMPlexSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/IBMPlexSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBMPlexSansArabic-Bold.ttf
+          weight: 700
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icon/foreground.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21
+
+# شعار تدلل أخضر زمردي بفراغ داخلي أبيض — عكس شعار ريكو الأبيض الذي كان
+# يفرض خلفية إطلاق خضراء ليبان عليها. فخلفية الإطلاق صارت بلون أرضية
+# التطبيق نفسها (RicoColors.canvas) عشان الانتقال من شاشة الإطلاق للمحادثة
+# ما يبيّن كقطع لوني، وخلفية الأيقونة التكيّفية بيضاء عشان الفراغ الداخلي
+# للشعار يُقرأ كجزء من التصميم لا كثقب.
+flutter_native_splash:
+  color: "#FAF8F5"
+  # صورة الإطلاق لها هامش أمان داخلي، بخلاف foreground.png المخصصة للأيقونة
+  # التكيّفية: أندرويد ١٢ يقصّ صورة الإطلاق بقناع دائري، وflutter_launcher_icons
+  # يضيف هامش ١٦٪ للأيقونة بنفسه — فلو استخدمنا ملفاً واحداً لصار أحدهما مقصوصاً
+  # أو مصغّراً مرتين.
+  image: assets/icon/splash.png
+  android_12:
+    color: "#FAF8F5"
+    image: assets/icon/splash.png
+  android: true
+  ios: true
+  web: false
